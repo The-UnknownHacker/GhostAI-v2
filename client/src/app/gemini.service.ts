@@ -10,17 +10,17 @@ export class GeminiService {
   constructor(private httpClient: HttpClient) { }
 
   chat(chatContent: ClientChatContent): Observable<ClientChatContent> {
-    return this.httpClient.post<ClientChatContent>('http://localhost:3000/api/chat', chatContent);
+    return this.httpClient.post<ClientChatContent>('https://api.ghostai.me/api/chat', chatContent);
   }
 
   generateText(message: string): Observable<ClientChatContent> {
-    return this.httpClient.post<ClientChatContent>('http://localhost:3000/api/text', {message});
+    return this.httpClient.post<ClientChatContent>('https://api.ghostai.me/api/text', {message});
   }
   
   vision(message: string, file: File): Observable<ClientChatContent> {
     const formData = new FormData();
     formData.append('file', file);
     formData.append('message', message);
-    return this.httpClient.post<ClientChatContent>('http://localhost:3000/api/vision', formData);
+    return this.httpClient.post<ClientChatContent>('https://api.ghostai.me/api/vision', formData);
   }
 }

@@ -10,11 +10,11 @@
 }
 
 .user {
-  background-color: white;
+  background-color: grey;
 }
 
 .chatbot {
-  background-color: white;
+  background-color: grey;
 }
 
 .chat-footer-container {
@@ -56,7 +56,7 @@
 
 .message-content {
   margin: 5px 0;
-  color: #666;
+  color: black; /* Change text color to black */
 }
 
 .message-container {
@@ -68,7 +68,7 @@
 
 .message {
   text-align: center;
-  color: #333;
+  color: #000000;
   padding: 20px;
 }
 

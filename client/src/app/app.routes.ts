@@ -22,4 +22,9 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./vision/vision.component').then((mod) => mod.VisionComponent),
   },
+  {
+    path: 'image-gen',
+    loadComponent: () =>
+      import('./image-gen/image-gen.component').then((mod) => mod.ImageGenComponent),
+  },
 ];

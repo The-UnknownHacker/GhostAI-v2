@@ -1,0 +1,11 @@
+/* app.component.scss */
+
+:host {
+  background-color: black; /* Set your desired background color */
+}
+
+.drawer-container {
+  width: auto;
+  height: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}

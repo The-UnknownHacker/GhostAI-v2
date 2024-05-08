@@ -1,0 +1,22 @@
+<mat-drawer-container class="drawer-container" autosize style="background-color: #000000;">
+  <mat-drawer mode="side" opened style="background-color: grey">
+      <mat-nav-list>
+          <a mat-list-item routerLink="chat">
+              <mat-icon matListItemIcon>chat_bubble</mat-icon>
+              <span matListItemTitle>Chat</span>
+          </a>
+          <a mat-list-item routerLink="text">
+              <mat-icon matListItemIcon>subject</mat-icon>
+              <span matListItemTitle>Text Generation</span>
+          </a>
+          <a mat-list-item routerLink="vision">
+              <mat-icon matListItemIcon>image</mat-icon>
+              <span matListItemTitle>Vision</span>
+          </a>
+      </mat-nav-list>
+  </mat-drawer>
+
+  <mat-drawer-content style="background-color: grey">
+      <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

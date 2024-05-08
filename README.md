@@ -33,7 +33,7 @@ In order to start the project use:
 
 ```bash
 $ git clone https://github.com/The-UnknownHacker/GhostAI-v2.git
-$ cd gemini-angular-nestjs
+$ cd GhostAI-v2
 ```
 
 ### Get an API Key from Google AI Studio

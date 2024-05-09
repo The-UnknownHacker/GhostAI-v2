@@ -10,11 +10,11 @@
 }
 
 .user {
-  background-color: grey;
+  background-color: black;
 }
 
 .chatbot {
-  background-color: grey; /* Change background color to grey */
+  background-color: black; /* Change background color to grey */
 }
 
 .chat-footer-container {
@@ -35,7 +35,7 @@
   padding: 10px;
   margin-top: 10px;
   border-radius: 10px;
-  background-color: grey; /* Change background color to grey */
+  background-color: black; /* Change background color to grey */
 }
 
 .avatar {
@@ -57,7 +57,7 @@
 
 .message-content {
   margin: 5px 0;
-  color: black; /* Change text color to black */
+  color: white; /* Change text color to black */
 }
 
 .message-container {
@@ -92,3 +92,33 @@
   height: 100%;
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
+
+.message-bar {
+  display: flex;
+  align-items: center;
+  background-color: black; /* Changed background color to grey */
+  padding: 10px;
+}
+
+.message-input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+.send-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+  background-color: #0056b3;
+}
+

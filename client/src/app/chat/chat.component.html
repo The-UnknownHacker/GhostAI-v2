@@ -21,17 +21,14 @@
   </div>
 </div>
 
-<div class="chat-footer-container">
-  <mat-form-field class="chat-input">
-    <input
-      placeholder="Send a message"
-      matInput
-      #inputMessage
-      [(ngModel)]="message"
-      (keyup.enter)="sendMessage(message)"
-    />
-  </mat-form-field>
-  <button mat-icon-button color="primary" (click)="sendMessage(message)">
-    <mat-icon>send</mat-icon>
+<div class="message-bar">
+  <input
+    placeholder="Send a message"
+    class="message-input"
+    [(ngModel)]="message"
+    (keyup.enter)="sendMessage(message)"
+  />
+  <button class="send-button" (click)="sendMessage(message)">
+    <span>Send</span>
   </button>
 </div>

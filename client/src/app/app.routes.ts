@@ -27,4 +27,9 @@ export const appRoutes: Route[] = [
     loadComponent: () =>
       import('./image-gen/image-gen.component').then((mod) => mod.ImageGenComponent),
   },
+  {
+    path: 'settings',
+    loadComponent: () =>
+      import('./settings/settings.component').then((mod) => mod.SettingsComponent),
+  }
 ];

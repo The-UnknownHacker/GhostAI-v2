@@ -18,6 +18,16 @@ async function bootstrap() {
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
+
+  // Restart server on uncaught exception
+  process.on('uncaughtException', () => {
+    Logger.error('Uncaught Exception occurred');
+    // Close server
+    app.close().then(() => {
+      // Restart server
+      bootstrap();
+    });
+  });
 }
 
 bootstrap();

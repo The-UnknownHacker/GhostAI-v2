@@ -28,6 +28,16 @@ async function bootstrap() {
       bootstrap();
     });
   });
+
+  // Restart server on uncaught exception
+  process.on('uncaughtException', (error) => {
+    Logger.error('Uncaught Exception occurred:', error);
+    // Close server
+    app.close().then(() => {
+      // Restart server
+      bootstrap();
+    });
+  });
 }
 
 bootstrap();

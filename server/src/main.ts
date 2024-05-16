@@ -8,27 +8,35 @@ import { NestFactory } from '@nestjs/core';
 
 import { AppModule } from './app/app.module';
 
-async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
-  const globalPrefix = 'api';
-  app.setGlobalPrefix(globalPrefix);
-  app.enableCors();
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  );
-
-  // Restart server on log message containing [ERROR]
-  Logger.overrideLogger((message) => {
+class CustomLogger extends Logger {
+  error(message: string, trace: string) {
+    super.error(message, trace);
     if (message.includes('[ERROR]')) {
-      // Close server
-      app.close().then(() => {
-        // Restart server
-        bootstrap();
-      });
+      this.restartServer();
     }
-  });
+  }
+
+  private restartServer() {
+    const bootstrapApp = async () => {
+      const app = await NestFactory.create(AppModule, {
+        logger: false, // Disable built-in logger to avoid conflicts
+      });
+      const globalPrefix = 'api';
+      app.setGlobalPrefix(globalPrefix);
+      app.enableCors();
+      const port = process.env.PORT || 3000;
+      await app.listen(port);
+      this.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
+    };
+
+    bootstrapApp().catch(error => {
+      this.error('Error occurred while restarting server:', error);
+    });
+  }
+}
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule, { logger: new CustomLogger() });
 }
 
 bootstrap().catch(error => {

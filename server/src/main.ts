@@ -1,8 +1,3 @@
-/**
- * This is not a production server yet!
- * This is only a minimal backend to get started.
- */
-
 import { Logger, ConsoleLogger } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
@@ -36,7 +31,16 @@ class CustomLogger extends ConsoleLogger {
 }
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, { logger: new CustomLogger() });
+  const logger = new CustomLogger();
+  const app = await NestFactory.create(AppModule, { logger });
+
+  const globalPrefix = 'api';
+  app.setGlobalPrefix(globalPrefix);
+  app.enableCors();
+  
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  logger.log(`🚀 Application is running on: http://localhost:${port}/${globalPrefix}`);
 }
 
 bootstrap().catch(error => {

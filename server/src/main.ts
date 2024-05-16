@@ -19,24 +19,15 @@ async function bootstrap() {
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
 
-  // Restart server on unhandled promise rejection
-  process.on('unhandledRejection', (reason, promise) => {
-    Logger.error('Unhandled Promise Rejection occurred:', reason);
-    // Close server
-    app.close().then(() => {
-      // Restart server
-      bootstrap();
-    });
-  });
-
-  // Restart server on uncaught exception
-  process.on('uncaughtException', (error) => {
-    Logger.error('Uncaught Exception occurred:', error);
-    // Close server
-    app.close().then(() => {
-      // Restart server
-      bootstrap();
-    });
+  // Restart server on log message containing [ERROR]
+  Logger.overrideLogger((message) => {
+    if (message.includes('[ERROR]')) {
+      // Close server
+      app.close().then(() => {
+        // Restart server
+        bootstrap();
+      });
+    }
   });
 }
 

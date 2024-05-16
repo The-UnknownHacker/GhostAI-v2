@@ -40,4 +40,6 @@ async function bootstrap() {
   });
 }
 
-bootstrap();
+bootstrap().catch(error => {
+  Logger.error('Error during bootstrap:', error);
+});
